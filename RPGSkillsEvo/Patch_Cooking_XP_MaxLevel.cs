@@ -15,7 +15,8 @@ internal static class Patch_Cooking_XP_MaxLevel
 			{
 				ActivityXPFlag.CookingAwarded = false;
 			}
-			else if ((UnityEngine.Object)(object)__instance.m_GearItemBeingCooked != (UnityEngine.Object)null)
+			else if ((UnityEngine.Object)(object)__instance.m_GearItemBeingCooked != (UnityEngine.Object)null
+				&& __instance.m_MinutesUntilCooked <= 0f)
 			{
 				PlayerLevel.AddXP(Settings.XpPerSkill);
 			}
