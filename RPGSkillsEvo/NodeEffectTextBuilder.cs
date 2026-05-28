@@ -91,6 +91,10 @@ public static class NodeEffectTextBuilder
 		}
 		case EffectType.DecayEfficiency:
 			return Loc.Get("RPG.DESC.DECAY_EFFICIENCY", node.EffectPerLevel);
+		case EffectType.CraftSpeed:
+			return Loc.Get("RPG.DESC.CRAFT_SPEED", node.EffectPerLevel);
+		case EffectType.BleedResist:
+			return Loc.Get("RPG.DESC.BLEED_RESIST", node.EffectPerLevel);
 		case EffectType.BuffDuration:
 		{
 			string text = Loc.Get("RPG.DESC.BUFF_DURATION", node.EffectPerLevel);
@@ -184,6 +188,10 @@ public static class NodeEffectTextBuilder
 		}
 		case EffectType.DecayEfficiency:
 			return Loc.Get("RPG.VAL.DECAY", (float)lvl * node.EffectPerLevel, Status.GetDecayEfficiency() * 100f);
+		case EffectType.CraftSpeed:
+			return Loc.Get("RPG.VAL.CRAFT_SPEED", (float)lvl * node.EffectPerLevel, Status.GetCraftSpeed() * 100f);
+		case EffectType.BleedResist:
+			return Loc.Get("RPG.VAL.BLEED_RESIST", (float)lvl * node.EffectPerLevel, Status.GetBleedResist() * 100f);
 		case EffectType.BuffDuration:
 		{
 			string text = Loc.Get("RPG.VAL.BUFF_DURATION", (float)lvl * node.EffectPerLevel, Status.GetBuffDuration() * 100f);
@@ -278,6 +286,10 @@ public static class NodeEffectTextBuilder
 		}
 		case EffectType.DecayEfficiency:
 			return Loc.Get("RPG.VAL.DECAY", (float)num * node.EffectPerLevel);
+		case EffectType.CraftSpeed:
+			return Loc.Get("RPG.VAL.CRAFT_SPEED", (float)num * node.EffectPerLevel);
+		case EffectType.BleedResist:
+			return Loc.Get("RPG.VAL.BLEED_RESIST", (float)num * node.EffectPerLevel);
 		case EffectType.BuffDuration:
 		{
 			string text = Loc.Get("RPG.VAL.BUFF_DURATION", (float)num * node.EffectPerLevel);
@@ -381,6 +393,10 @@ public static class NodeEffectTextBuilder
 		}
 		case EffectType.DecayEfficiency:
 			return $"Reduces durability loss for food and clothing.\n+{node.EffectPerLevel}% decay suppression per point.";
+		case EffectType.CraftSpeed:
+			return $"Reduces repair and crafting time.\n-{node.EffectPerLevel}% time per point.";
+		case EffectType.BleedResist:
+			return $"Increases bleed-out time.\n+{node.EffectPerLevel}% bleed duration per point.";
 		case EffectType.BuffDuration:
 		{
 			string text = $"Increases buff duration for fatigue and weight buffs.\n+{node.EffectPerLevel}% buff duration per point.";
@@ -474,6 +490,10 @@ public static class NodeEffectTextBuilder
 		}
 		case EffectType.DecayEfficiency:
 			return $"Decay suppression +{(float)lvl * node.EffectPerLevel}% (Total: {Status.GetDecayEfficiency() * 100f:F0}%)";
+		case EffectType.CraftSpeed:
+			return $"Repair time -{(float)lvl * node.EffectPerLevel}% (Total: -{Status.GetCraftSpeed() * 100f:F0}%)";
+		case EffectType.BleedResist:
+			return $"Bleed time +{(float)lvl * node.EffectPerLevel}% (Total: +{Status.GetBleedResist() * 100f:F0}%)";
 		case EffectType.BuffDuration:
 		{
 			string text = $"Buff duration +{(float)lvl * node.EffectPerLevel}% (Total: {Status.GetBuffDuration() * 100f:F0}%)";
@@ -568,6 +588,10 @@ public static class NodeEffectTextBuilder
 		}
 		case EffectType.DecayEfficiency:
 			return $"Decay suppression +{(float)num * node.EffectPerLevel}%";
+		case EffectType.CraftSpeed:
+			return $"Repair time -{(float)num * node.EffectPerLevel}%";
+		case EffectType.BleedResist:
+			return $"Bleed time +{(float)num * node.EffectPerLevel}%";
 		case EffectType.BuffDuration:
 		{
 			string text = $"Buff duration +{(float)num * node.EffectPerLevel}%";

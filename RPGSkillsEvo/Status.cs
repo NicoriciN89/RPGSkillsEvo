@@ -34,6 +34,10 @@ public static class Status
 
 	private static float cachedBuffDuration;
 
+	private static float cachedCraftSpeed;
+
+	private static float cachedBleedResist;
+
 	public static void RefreshCache()
 	{
 		float num = 0f;
@@ -52,6 +56,8 @@ public static class Status
 		float num14 = 0f;
 		float num15 = 0f;
 		float num16 = 0f;
+		float num17cs = 0f;
+		float num18br = 0f;
 		foreach (SkillNode allNode in NodeDatabase.AllNodes)
 		{
 			int num17 = (DataHub.RealNodes.ContainsKey(allNode.ID) ? DataHub.RealNodes[allNode.ID] : 0);
@@ -98,6 +104,12 @@ public static class Status
 				case EffectType.BuffDuration:
 					num16 += (float)num17 * allNode.EffectPerLevel * 0.01f;
 					break;
+				case EffectType.CraftSpeed:
+					num17cs += (float)num17 * allNode.EffectPerLevel * 0.01f;
+					break;
+				case EffectType.BleedResist:
+					num18br += (float)num17 * allNode.EffectPerLevel * 0.01f;
+					break;
 				}
 				if (allNode.Penalty == PenaltyType.SpeedDown)
 				{
@@ -128,6 +140,8 @@ public static class Status
 		cachedVitalityDownPenalty = num14;
 		cachedDecayEfficiency = Math.Min(0.2f, num15);
 		cachedBuffDuration = Math.Min(1f, num16);
+		cachedCraftSpeed = Math.Min(0.5f, num17cs);
+		cachedBleedResist = Math.Min(0.5f, num18br);
 	}
 
 	public static float GetWeightBonus()
@@ -203,5 +217,15 @@ public static class Status
 	public static float GetBuffDuration()
 	{
 		return cachedBuffDuration;
+	}
+
+	public static float GetCraftSpeed()
+	{
+		return cachedCraftSpeed;
+	}
+
+	public static float GetBleedResist()
+	{
+		return cachedBleedResist;
 	}
 }

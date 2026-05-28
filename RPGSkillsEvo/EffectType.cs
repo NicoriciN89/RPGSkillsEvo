@@ -33,5 +33,7 @@ public enum EffectType
 	VitalityUp,
 	ProtectionUp,
 	DecayEfficiency,
-	BuffDuration
+	BuffDuration,
+	CraftSpeed,
+	BleedResist
 }
