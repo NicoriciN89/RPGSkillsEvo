@@ -1,19 +1,17 @@
 using HarmonyLib;
 using Il2Cpp;
-using Il2CppTLD.Gameplay;
 
 namespace RPGSkillsEvo;
 
-[HarmonyPatch(typeof(ExperienceMode), "GetBleedOutTimeScale")]
+[HarmonyPatch(typeof(Condition), "AddHealth", typeof(float), typeof(DamageSource), typeof(bool))]
 internal static class Patch_BleedResist
 {
-	private static void Postfix(ref float __result)
+	private static void Prefix(ref float hp, DamageSource cause)
 	{
-		if (!GameManager.IsMainMenuActive() && !GameManager.IsEmptySceneActive())
-		{
-			float bonus = Status.GetBleedResist();
-			if (bonus > 0f)
-				__result *= 1f + bonus;
-		}
+		if (hp >= 0f || cause != DamageSource.BloodLoss) return;
+		if (GameManager.IsMainMenuActive() || GameManager.IsEmptySceneActive()) return;
+		float bonus = Status.GetBleedResist();
+		if (bonus > 0f)
+			hp *= 1f - bonus;
 	}
 }
