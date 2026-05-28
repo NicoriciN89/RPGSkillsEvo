@@ -67,6 +67,8 @@ public static class NodeDatabase
 		AllNodes.Add(new SkillNode("WS5WN1W2", "생존 전문가", "Survival Expert", -8, 4, 5, "WS5WN1W1", "Heart", 5, EffectType.VitalityUp, 5f, PenaltyType.WeightDown, 2f));
 		AllNodes.Add(new SkillNode("WS5N1", "출혈 저항 I", "Bleed Resist I", -5, 4, 5, "WS5", "Heart", 2, EffectType.BleedResist, 5f));
 		AllNodes.Add(new SkillNode("WS5N2", "출혈 저항 II", "Bleed Resist II", -5, 3, 5, "WS5N1", "Heart", 3, EffectType.BleedResist, 5f));
+		AllNodes.Add(new SkillNode("WS5E1", "채집 보너스 I", "Harvest Bonus I", -4, 5, 5, "WS5", "Heart", 2, EffectType.HarvestBonus, 5f));
+		AllNodes.Add(new SkillNode("WS5E2", "채집 보너스 II", "Harvest Bonus II", -4, 4, 5, "WS5E1", "Heart", 3, EffectType.HarvestBonus, 5f));
 		AllNodes.Add(new SkillNode("ES5", "종합 관리능력 개방", "Management Awakening", 5, 5, 1, "CORE", "BackPackBarrier", 5, EffectType.Unlock));
 		AllNodes.Add(new SkillNode("ES5S1", "내구도 효율 I", "Durability Efficiency I", 5, 6, 5, "ES5", "BackPackBarrier", 2, EffectType.DecayEfficiency, 1f));
 		AllNodes.Add(new SkillNode("ES5S2", "내구도 효율 II", "Durability Efficiency II", 5, 7, 5, "ES5S1", "BackPackBarrier", 5, EffectType.DecayEfficiency, 3f));

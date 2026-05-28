@@ -38,6 +38,8 @@ public static class Status
 
 	private static float cachedBleedResist;
 
+	private static float cachedHarvestBonus;
+
 	public static void RefreshCache()
 	{
 		float num = 0f;
@@ -58,6 +60,7 @@ public static class Status
 		float num16 = 0f;
 		float num17cs = 0f;
 		float num18br = 0f;
+		float num19hb = 0f;
 		foreach (SkillNode allNode in NodeDatabase.AllNodes)
 		{
 			int num17 = (DataHub.RealNodes.ContainsKey(allNode.ID) ? DataHub.RealNodes[allNode.ID] : 0);
@@ -142,6 +145,7 @@ public static class Status
 		cachedBuffDuration = Math.Min(1f, num16);
 		cachedCraftSpeed = Math.Min(0.5f, num17cs);
 		cachedBleedResist = Math.Min(0.5f, num18br);
+		cachedHarvestBonus = Math.Min(1f, num19hb);
 	}
 
 	public static float GetWeightBonus()
@@ -227,5 +231,10 @@ public static class Status
 	public static float GetBleedResist()
 	{
 		return cachedBleedResist;
+	}
+
+	public static float GetHarvestBonus()
+	{
+		return cachedHarvestBonus;
 	}
 }

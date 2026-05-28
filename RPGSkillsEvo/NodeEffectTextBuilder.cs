@@ -95,6 +95,8 @@ public static class NodeEffectTextBuilder
 			return Loc.Get("RPG.DESC.CRAFT_SPEED", node.EffectPerLevel);
 		case EffectType.BleedResist:
 			return Loc.Get("RPG.DESC.BLEED_RESIST", node.EffectPerLevel);
+		case EffectType.HarvestBonus:
+			return Loc.Get("RPG.DESC.HARVEST_BONUS", node.EffectPerLevel);
 		case EffectType.BuffDuration:
 		{
 			string text = Loc.Get("RPG.DESC.BUFF_DURATION", node.EffectPerLevel);
@@ -192,6 +194,8 @@ public static class NodeEffectTextBuilder
 			return Loc.Get("RPG.VAL.CRAFT_SPEED", (float)lvl * node.EffectPerLevel, Status.GetCraftSpeed() * 100f);
 		case EffectType.BleedResist:
 			return Loc.Get("RPG.VAL.BLEED_RESIST", (float)lvl * node.EffectPerLevel, Status.GetBleedResist() * 100f);
+		case EffectType.HarvestBonus:
+			return Loc.Get("RPG.VAL.HARVEST_BONUS", (float)lvl * node.EffectPerLevel, Status.GetHarvestBonus() * 100f);
 		case EffectType.BuffDuration:
 		{
 			string text = Loc.Get("RPG.VAL.BUFF_DURATION", (float)lvl * node.EffectPerLevel, Status.GetBuffDuration() * 100f);
@@ -290,6 +294,8 @@ public static class NodeEffectTextBuilder
 			return Loc.Get("RPG.VAL.CRAFT_SPEED", (float)num * node.EffectPerLevel);
 		case EffectType.BleedResist:
 			return Loc.Get("RPG.VAL.BLEED_RESIST", (float)num * node.EffectPerLevel);
+		case EffectType.HarvestBonus:
+			return Loc.Get("RPG.VAL.HARVEST_BONUS", (float)num * node.EffectPerLevel);
 		case EffectType.BuffDuration:
 		{
 			string text = Loc.Get("RPG.VAL.BUFF_DURATION", (float)num * node.EffectPerLevel);
@@ -397,6 +403,8 @@ public static class NodeEffectTextBuilder
 			return $"Reduces repair and crafting time.\n-{node.EffectPerLevel}% time per point.";
 		case EffectType.BleedResist:
 			return $"Increases bleed-out time.\n+{node.EffectPerLevel}% bleed duration per point.";
+		case EffectType.HarvestBonus:
+			return $"Increases natural plant harvest yield.\n+{node.EffectPerLevel}% extra items per point.";
 		case EffectType.BuffDuration:
 		{
 			string text = $"Increases buff duration for fatigue and weight buffs.\n+{node.EffectPerLevel}% buff duration per point.";
@@ -494,6 +502,8 @@ public static class NodeEffectTextBuilder
 			return $"Repair time -{(float)lvl * node.EffectPerLevel}% (Total: -{Status.GetCraftSpeed() * 100f:F0}%)";
 		case EffectType.BleedResist:
 			return $"Bleed time +{(float)lvl * node.EffectPerLevel}% (Total: +{Status.GetBleedResist() * 100f:F0}%)";
+		case EffectType.HarvestBonus:
+			return $"Harvest +{(float)lvl * node.EffectPerLevel}% (Total: +{Status.GetHarvestBonus() * 100f:F0}%)";
 		case EffectType.BuffDuration:
 		{
 			string text = $"Buff duration +{(float)lvl * node.EffectPerLevel}% (Total: {Status.GetBuffDuration() * 100f:F0}%)";
@@ -592,6 +602,8 @@ public static class NodeEffectTextBuilder
 			return $"Repair time -{(float)num * node.EffectPerLevel}%";
 		case EffectType.BleedResist:
 			return $"Bleed time +{(float)num * node.EffectPerLevel}%";
+		case EffectType.HarvestBonus:
+			return $"Harvest +{(float)num * node.EffectPerLevel}%";
 		case EffectType.BuffDuration:
 		{
 			string text = $"Buff duration +{(float)num * node.EffectPerLevel}%";

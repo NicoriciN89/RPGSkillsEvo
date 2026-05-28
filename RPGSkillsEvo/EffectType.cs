@@ -35,5 +35,6 @@ public enum EffectType
 	DecayEfficiency,
 	BuffDuration,
 	CraftSpeed,
-	BleedResist
+	BleedResist,
+	HarvestBonus
 }
