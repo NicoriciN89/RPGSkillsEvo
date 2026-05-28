@@ -42,6 +42,7 @@ public static class Status
 	private static float cachedThirstDown;
 	private static float cachedToolDurability;
 	private static float cachedFishingBonus;
+	private static float cachedSprintStamina;
 
 	public static void RefreshCache()
 	{
@@ -67,6 +68,7 @@ public static class Status
 		float num20td = 0f;
 		float num21tool = 0f;
 		float num22fish = 0f;
+		float num23ss = 0f;
 		foreach (SkillNode allNode in NodeDatabase.AllNodes)
 		{
 			int num17 = (DataHub.RealNodes.ContainsKey(allNode.ID) ? DataHub.RealNodes[allNode.ID] : 0);
@@ -131,6 +133,9 @@ public static class Status
 				case EffectType.FishingBonus:
 					num22fish += (float)num17 * allNode.EffectPerLevel * 0.01f;
 					break;
+				case EffectType.SprintStamina:
+					num23ss += (float)num17 * allNode.EffectPerLevel * 0.01f;
+					break;
 				}
 				if (allNode.Penalty == PenaltyType.SpeedDown)
 				{
@@ -167,6 +172,7 @@ public static class Status
 		cachedThirstDown = Math.Min(0.5f, num20td);
 		cachedToolDurability = Math.Min(0.5f, num21tool);
 		cachedFishingBonus = Math.Min(1f, num22fish);
+		cachedSprintStamina = Math.Min(1f, num23ss);
 	}
 
 	public static float GetWeightBonus()
@@ -272,5 +278,10 @@ public static class Status
 	public static float GetFishingBonus()
 	{
 		return cachedFishingBonus;
+	}
+
+	public static float GetSprintStamina()
+	{
+		return cachedSprintStamina;
 	}
 }

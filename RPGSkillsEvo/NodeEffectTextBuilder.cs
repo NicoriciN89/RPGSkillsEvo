@@ -103,6 +103,8 @@ public static class NodeEffectTextBuilder
 			return Loc.Get("RPG.DESC.TOOL_DURABILITY", node.EffectPerLevel);
 		case EffectType.FishingBonus:
 			return Loc.Get("RPG.DESC.FISHING_BONUS", node.EffectPerLevel);
+		case EffectType.SprintStamina:
+			return Loc.Get("RPG.DESC.SPRINT_STAMINA", node.EffectPerLevel);
 		case EffectType.BuffDuration:
 		{
 			string text = Loc.Get("RPG.DESC.BUFF_DURATION", node.EffectPerLevel);
@@ -208,6 +210,8 @@ public static class NodeEffectTextBuilder
 			return Loc.Get("RPG.VAL.TOOL_DURABILITY", (float)lvl * node.EffectPerLevel, Status.GetToolDurability() * 100f);
 		case EffectType.FishingBonus:
 			return Loc.Get("RPG.VAL.FISHING_BONUS", (float)lvl * node.EffectPerLevel, Status.GetFishingBonus() * 100f);
+		case EffectType.SprintStamina:
+			return Loc.Get("RPG.VAL.SPRINT_STAMINA", (float)lvl * node.EffectPerLevel, Status.GetSprintStamina() * 100f);
 		case EffectType.BuffDuration:
 		{
 			string text = Loc.Get("RPG.VAL.BUFF_DURATION", (float)lvl * node.EffectPerLevel, Status.GetBuffDuration() * 100f);
@@ -314,6 +318,8 @@ public static class NodeEffectTextBuilder
 			return Loc.Get("RPG.VAL.TOOL_DURABILITY", (float)num * node.EffectPerLevel);
 		case EffectType.FishingBonus:
 			return Loc.Get("RPG.VAL.FISHING_BONUS", (float)num * node.EffectPerLevel);
+		case EffectType.SprintStamina:
+			return Loc.Get("RPG.VAL.SPRINT_STAMINA", (float)num * node.EffectPerLevel);
 		case EffectType.BuffDuration:
 		{
 			string text = Loc.Get("RPG.VAL.BUFF_DURATION", (float)num * node.EffectPerLevel);
@@ -429,6 +435,8 @@ public static class NodeEffectTextBuilder
 			return $"Reduces condition loss from tool and weapon use.\n-{node.EffectPerLevel}% wear per point.";
 		case EffectType.FishingBonus:
 			return $"Increases caught fish weight.\n+{node.EffectPerLevel}% fish size per point.";
+		case EffectType.SprintStamina:
+			return $"Increases max sprint stamina.\n+{node.EffectPerLevel}% stamina per point.";
 		case EffectType.BuffDuration:
 		{
 			string text = $"Increases buff duration for fatigue and weight buffs.\n+{node.EffectPerLevel}% buff duration per point.";
@@ -534,6 +542,8 @@ public static class NodeEffectTextBuilder
 			return $"Wear -{(float)lvl * node.EffectPerLevel}% (Total: -{Status.GetToolDurability() * 100f:F0}%)";
 		case EffectType.FishingBonus:
 			return $"Fish +{(float)lvl * node.EffectPerLevel}% (Total: +{Status.GetFishingBonus() * 100f:F0}%)";
+		case EffectType.SprintStamina:
+			return $"Stamina +{(float)lvl * node.EffectPerLevel}% (Total: +{Status.GetSprintStamina() * 100f:F0}%)";
 		case EffectType.BuffDuration:
 		{
 			string text = $"Buff duration +{(float)lvl * node.EffectPerLevel}% (Total: {Status.GetBuffDuration() * 100f:F0}%)";
@@ -640,6 +650,8 @@ public static class NodeEffectTextBuilder
 			return $"Wear -{(float)num * node.EffectPerLevel}%";
 		case EffectType.FishingBonus:
 			return $"Fish +{(float)num * node.EffectPerLevel}%";
+		case EffectType.SprintStamina:
+			return $"Stamina +{(float)num * node.EffectPerLevel}%";
 		case EffectType.BuffDuration:
 		{
 			string text = $"Buff duration +{(float)num * node.EffectPerLevel}%";

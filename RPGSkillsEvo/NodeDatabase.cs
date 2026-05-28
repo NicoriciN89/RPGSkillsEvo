@@ -86,6 +86,9 @@ public static class NodeDatabase
 			// FishingBonus — east branch of S6 (Exploration)
 			AllNodes.Add(new SkillNode("S6E1", "낚시 보너스 I", "Fishing Bonus I", 1, 6, 5, "S6", "Search", 2, EffectType.FishingBonus, 10f));
 			AllNodes.Add(new SkillNode("S6E2", "낚시 보너스 II", "Fishing Bonus II", 1, 7, 5, "S6E1", "Search", 3, EffectType.FishingBonus, 10f));
+			// SprintStamina — extends from Sprint Speed III (E7N1E2)
+			AllNodes.Add(new SkillNode("E7N1E3", "질주 지구력 I", "Sprint Stamina I", 10, -1, 5, "E7N1E2", "Running", 2, EffectType.SprintStamina, 10f));
+			AllNodes.Add(new SkillNode("E7N1E4", "질주 지구력 II", "Sprint Stamina II", 11, -1, 5, "E7N1E3", "Running", 3, EffectType.SprintStamina, 10f));
 	}
 
 	public static SkillNode GetByID(string id)

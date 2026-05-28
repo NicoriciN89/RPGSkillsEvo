@@ -39,5 +39,6 @@ public enum EffectType
 	HarvestBonus,
 	ThirstDown,
 	ToolDurability,
-	FishingBonus
+	FishingBonus,
+	SprintStamina
 }
