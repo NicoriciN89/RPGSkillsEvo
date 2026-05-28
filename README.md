@@ -1,8 +1,8 @@
 # RPG Skills Evo — The Long Dark Mod
 
-A continuation/fork of the original **RPG Skills Evo** mod for *The Long Dark*.
+An independent mod for *The Long Dark* adding RPG-style skill progression, localization, and quality-of-life features.
 
-**Original author:** [ekrtoqj on Nexus Mods](https://www.nexusmods.com/thelongdark/users/ekrtoqj)
+> **Note:** This is an independent project, not an official continuation or co-developed version of any other mod.
 
 ---
 
@@ -37,4 +37,3 @@ A continuation/fork of the original **RPG Skills Evo** mod for *The Long Dark*.
 ## License
 
 MIT — see [LICENSE](LICENSE).
-Credits to the original author ekrtoqj for the base mod.
