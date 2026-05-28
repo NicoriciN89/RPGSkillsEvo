@@ -77,6 +77,15 @@ public static class NodeDatabase
 		AllNodes.Add(new SkillNode("ES6", "버프 지속시간 증가 I", "Buff Duration I", 6, 6, 5, "ES5", "", 2, EffectType.BuffDuration, 4f, PenaltyType.VitalityDown, 1f));
 		AllNodes.Add(new SkillNode("ES7", "버프 지속시간 증가 II", "Buff Duration II", 7, 7, 5, "ES6", "", 4, EffectType.BuffDuration, 6f, PenaltyType.VitalityDown, 1f));
 		AllNodes.Add(new SkillNode("ES8", "버프 중독", "Buff Addiction", 8, 8, 5, "ES7", "", 6, EffectType.BuffDuration, 10f, PenaltyType.VitalityDown, 2f));
+			// ThirstDown — extends from WS7 (Hunger II)
+			AllNodes.Add(new SkillNode("WS7N1", "갈증 감소 I", "Thirst Reduction I", -7, 8, 5, "WS7", "Heart", 2, EffectType.ThirstDown, 5f));
+			AllNodes.Add(new SkillNode("WS7N2", "갈증 감소 II", "Thirst Reduction II", -7, 9, 5, "WS7N1", "Heart", 3, EffectType.ThirstDown, 5f));
+			// ToolDurability — west branch of ES5 (Management)
+			AllNodes.Add(new SkillNode("ES5W1", "도구 내구도 I", "Tool Durability I", 4, 5, 5, "ES5", "BackPackBarrier", 2, EffectType.ToolDurability, 5f));
+			AllNodes.Add(new SkillNode("ES5W2", "도구 내구도 II", "Tool Durability II", 4, 4, 5, "ES5W1", "BackPackBarrier", 3, EffectType.ToolDurability, 5f));
+			// FishingBonus — east branch of S6 (Exploration)
+			AllNodes.Add(new SkillNode("S6E1", "낚시 보너스 I", "Fishing Bonus I", 1, 6, 5, "S6", "Search", 2, EffectType.FishingBonus, 10f));
+			AllNodes.Add(new SkillNode("S6E2", "낚시 보너스 II", "Fishing Bonus II", 1, 7, 5, "S6E1", "Search", 3, EffectType.FishingBonus, 10f));
 	}
 
 	public static SkillNode GetByID(string id)

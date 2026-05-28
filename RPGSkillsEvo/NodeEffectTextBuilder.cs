@@ -97,6 +97,12 @@ public static class NodeEffectTextBuilder
 			return Loc.Get("RPG.DESC.BLEED_RESIST", node.EffectPerLevel);
 		case EffectType.HarvestBonus:
 			return Loc.Get("RPG.DESC.HARVEST_BONUS", node.EffectPerLevel);
+		case EffectType.ThirstDown:
+			return Loc.Get("RPG.DESC.THIRST_DOWN", node.EffectPerLevel);
+		case EffectType.ToolDurability:
+			return Loc.Get("RPG.DESC.TOOL_DURABILITY", node.EffectPerLevel);
+		case EffectType.FishingBonus:
+			return Loc.Get("RPG.DESC.FISHING_BONUS", node.EffectPerLevel);
 		case EffectType.BuffDuration:
 		{
 			string text = Loc.Get("RPG.DESC.BUFF_DURATION", node.EffectPerLevel);
@@ -196,6 +202,12 @@ public static class NodeEffectTextBuilder
 			return Loc.Get("RPG.VAL.BLEED_RESIST", (float)lvl * node.EffectPerLevel, Status.GetBleedResist() * 100f);
 		case EffectType.HarvestBonus:
 			return Loc.Get("RPG.VAL.HARVEST_BONUS", (float)lvl * node.EffectPerLevel, Status.GetHarvestBonus() * 100f);
+		case EffectType.ThirstDown:
+			return Loc.Get("RPG.VAL.THIRST_DOWN", (float)lvl * node.EffectPerLevel, Status.GetThirstDown() * 100f);
+		case EffectType.ToolDurability:
+			return Loc.Get("RPG.VAL.TOOL_DURABILITY", (float)lvl * node.EffectPerLevel, Status.GetToolDurability() * 100f);
+		case EffectType.FishingBonus:
+			return Loc.Get("RPG.VAL.FISHING_BONUS", (float)lvl * node.EffectPerLevel, Status.GetFishingBonus() * 100f);
 		case EffectType.BuffDuration:
 		{
 			string text = Loc.Get("RPG.VAL.BUFF_DURATION", (float)lvl * node.EffectPerLevel, Status.GetBuffDuration() * 100f);
@@ -296,6 +308,12 @@ public static class NodeEffectTextBuilder
 			return Loc.Get("RPG.VAL.BLEED_RESIST", (float)num * node.EffectPerLevel);
 		case EffectType.HarvestBonus:
 			return Loc.Get("RPG.VAL.HARVEST_BONUS", (float)num * node.EffectPerLevel);
+		case EffectType.ThirstDown:
+			return Loc.Get("RPG.VAL.THIRST_DOWN", (float)num * node.EffectPerLevel);
+		case EffectType.ToolDurability:
+			return Loc.Get("RPG.VAL.TOOL_DURABILITY", (float)num * node.EffectPerLevel);
+		case EffectType.FishingBonus:
+			return Loc.Get("RPG.VAL.FISHING_BONUS", (float)num * node.EffectPerLevel);
 		case EffectType.BuffDuration:
 		{
 			string text = Loc.Get("RPG.VAL.BUFF_DURATION", (float)num * node.EffectPerLevel);
@@ -405,6 +423,12 @@ public static class NodeEffectTextBuilder
 			return $"Increases bleed-out time.\n+{node.EffectPerLevel}% bleed duration per point.";
 		case EffectType.HarvestBonus:
 			return $"Increases natural plant harvest yield.\n+{node.EffectPerLevel}% extra items per point.";
+		case EffectType.ThirstDown:
+			return $"Reduces dehydration drain rate.\n-{node.EffectPerLevel}% thirst per point.";
+		case EffectType.ToolDurability:
+			return $"Reduces condition loss from tool and weapon use.\n-{node.EffectPerLevel}% wear per point.";
+		case EffectType.FishingBonus:
+			return $"Increases caught fish weight.\n+{node.EffectPerLevel}% fish size per point.";
 		case EffectType.BuffDuration:
 		{
 			string text = $"Increases buff duration for fatigue and weight buffs.\n+{node.EffectPerLevel}% buff duration per point.";
@@ -504,6 +528,12 @@ public static class NodeEffectTextBuilder
 			return $"Bleed time +{(float)lvl * node.EffectPerLevel}% (Total: +{Status.GetBleedResist() * 100f:F0}%)";
 		case EffectType.HarvestBonus:
 			return $"Harvest +{(float)lvl * node.EffectPerLevel}% (Total: +{Status.GetHarvestBonus() * 100f:F0}%)";
+		case EffectType.ThirstDown:
+			return $"Thirst -{(float)lvl * node.EffectPerLevel}% (Total: -{Status.GetThirstDown() * 100f:F0}%)";
+		case EffectType.ToolDurability:
+			return $"Wear -{(float)lvl * node.EffectPerLevel}% (Total: -{Status.GetToolDurability() * 100f:F0}%)";
+		case EffectType.FishingBonus:
+			return $"Fish +{(float)lvl * node.EffectPerLevel}% (Total: +{Status.GetFishingBonus() * 100f:F0}%)";
 		case EffectType.BuffDuration:
 		{
 			string text = $"Buff duration +{(float)lvl * node.EffectPerLevel}% (Total: {Status.GetBuffDuration() * 100f:F0}%)";
@@ -604,6 +634,12 @@ public static class NodeEffectTextBuilder
 			return $"Bleed time +{(float)num * node.EffectPerLevel}%";
 		case EffectType.HarvestBonus:
 			return $"Harvest +{(float)num * node.EffectPerLevel}%";
+		case EffectType.ThirstDown:
+			return $"Thirst -{(float)num * node.EffectPerLevel}%";
+		case EffectType.ToolDurability:
+			return $"Wear -{(float)num * node.EffectPerLevel}%";
+		case EffectType.FishingBonus:
+			return $"Fish +{(float)num * node.EffectPerLevel}%";
 		case EffectType.BuffDuration:
 		{
 			string text = $"Buff duration +{(float)num * node.EffectPerLevel}%";

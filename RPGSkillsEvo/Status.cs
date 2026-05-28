@@ -39,6 +39,9 @@ public static class Status
 	private static float cachedBleedResist;
 
 	private static float cachedHarvestBonus;
+	private static float cachedThirstDown;
+	private static float cachedToolDurability;
+	private static float cachedFishingBonus;
 
 	public static void RefreshCache()
 	{
@@ -61,6 +64,9 @@ public static class Status
 		float num17cs = 0f;
 		float num18br = 0f;
 		float num19hb = 0f;
+		float num20td = 0f;
+		float num21tool = 0f;
+		float num22fish = 0f;
 		foreach (SkillNode allNode in NodeDatabase.AllNodes)
 		{
 			int num17 = (DataHub.RealNodes.ContainsKey(allNode.ID) ? DataHub.RealNodes[allNode.ID] : 0);
@@ -113,6 +119,18 @@ public static class Status
 				case EffectType.BleedResist:
 					num18br += (float)num17 * allNode.EffectPerLevel * 0.01f;
 					break;
+				case EffectType.HarvestBonus:
+					num19hb += (float)num17 * allNode.EffectPerLevel * 0.01f;
+					break;
+				case EffectType.ThirstDown:
+					num20td += (float)num17 * allNode.EffectPerLevel * 0.01f;
+					break;
+				case EffectType.ToolDurability:
+					num21tool += (float)num17 * allNode.EffectPerLevel * 0.01f;
+					break;
+				case EffectType.FishingBonus:
+					num22fish += (float)num17 * allNode.EffectPerLevel * 0.01f;
+					break;
 				}
 				if (allNode.Penalty == PenaltyType.SpeedDown)
 				{
@@ -146,6 +164,9 @@ public static class Status
 		cachedCraftSpeed = Math.Min(0.5f, num17cs);
 		cachedBleedResist = Math.Min(0.5f, num18br);
 		cachedHarvestBonus = Math.Min(1f, num19hb);
+		cachedThirstDown = Math.Min(0.5f, num20td);
+		cachedToolDurability = Math.Min(0.5f, num21tool);
+		cachedFishingBonus = Math.Min(1f, num22fish);
 	}
 
 	public static float GetWeightBonus()
@@ -236,5 +257,20 @@ public static class Status
 	public static float GetHarvestBonus()
 	{
 		return cachedHarvestBonus;
+	}
+
+	public static float GetThirstDown()
+	{
+		return cachedThirstDown;
+	}
+
+	public static float GetToolDurability()
+	{
+		return cachedToolDurability;
+	}
+
+	public static float GetFishingBonus()
+	{
+		return cachedFishingBonus;
 	}
 }

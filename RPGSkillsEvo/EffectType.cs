@@ -36,5 +36,8 @@ public enum EffectType
 	BuffDuration,
 	CraftSpeed,
 	BleedResist,
-	HarvestBonus
+	HarvestBonus,
+	ThirstDown,
+	ToolDurability,
+	FishingBonus
 }
