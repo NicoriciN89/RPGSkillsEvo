@@ -1,0 +1,64 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>RPG Skills Evo</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <TargetFramework>net472</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>12.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>e:\games\TheLongDark\MelonLoader\net472\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="MelonLoader">
+      <HintPath>e:\games\TheLongDark\MelonLoader\net472\MelonLoader.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>e:\games\TheLongDark\MelonLoader\Il2CppAssemblies\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppInterop.Runtime">
+      <HintPath>e:\games\TheLongDark\MelonLoader\net6\Il2CppInterop.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>e:\games\TheLongDark\MelonLoader\Il2CppAssemblies\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>e:\games\TheLongDark\MelonLoader\Il2CppAssemblies\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="0Harmony">
+      <HintPath>e:\games\TheLongDark\MelonLoader\net472\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2Cppmscorlib">
+      <HintPath>e:\games\TheLongDark\MelonLoader\Il2CppAssemblies\Il2Cppmscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppTLD.IntBackedUnit">
+      <HintPath>e:\games\TheLongDark\MelonLoader\Il2CppAssemblies\Il2CppTLD.IntBackedUnit.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppTLD.SaveState">
+      <HintPath>e:\games\TheLongDark\MelonLoader\Il2CppAssemblies\Il2CppTLD.SaveState.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppAK.Wwise.Unity.API.WwiseTypes">
+      <HintPath>e:\games\TheLongDark\MelonLoader\Il2CppAssemblies\Il2CppAK.Wwise.Unity.API.WwiseTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>e:\games\TheLongDark\MelonLoader\Il2CppAssemblies\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>e:\games\TheLongDark\MelonLoader\Il2CppAssemblies\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>e:\games\TheLongDark\MelonLoader\Il2CppAssemblies\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="ModSettings">
+      <HintPath>e:\games\TheLongDark\Mods\ModSettings.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="localization.json" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,37 @@
+namespace RPGSkillsEvo;
+
+public enum EffectType
+{
+	None,
+	Unlock,
+	WeightUp,
+	SpeedPenaltyOffset,
+	WalkSpeed,
+	SprintSpeed,
+	CrouchSpeed,
+	LootSlot,
+	AutoLootUnlock,
+	LootRadius,
+	QuickSlotUnlock,
+	PresetUnlock,
+	QuickSlot,
+	PresetSlot,
+	MapTrackUnlock,
+	MapTrackArrow,
+	MapTrackHeight,
+	WindResistUnlock,
+	WindResist,
+	RevolverAimMove,
+	RifleZoomUnlock,
+	RifleZoomRange1,
+	RifleZoomRange2,
+	RevolverZoomUnlock,
+	RevolverZoomRange,
+	WarmthUp,
+	FatigueDown,
+	HungerDown,
+	VitalityUp,
+	ProtectionUp,
+	DecayEfficiency,
+	BuffDuration
+}
