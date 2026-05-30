@@ -248,7 +248,7 @@ public static class TooltipManager
 			bool maxed = NodeEffectTextBuilder.IsNodeMaxed(currentNode, currentLvl);
 			string curVal = NodeEffectTextBuilder.BuildCurrentVal(currentNode, currentLvl);
 			string nxtVal = NodeEffectTextBuilder.BuildNextVal(currentNode, currentLvl, maxed);
-			if (maxed && currentNode.MaxLevel < 999) { curVal += Loc.Get("RPG.TIP.MAX"); nxtVal = "MAX"; }
+			if (maxed && currentNode.MaxLevel < 999) { curVal += Loc.Get("RPG.TIP.MAX"); nxtVal = Loc.Get("RPG.TIP.IS_MAX"); }
 			string maxStr = (currentNode.MaxLevel >= 999) ? "∞" : currentNode.MaxLevel.ToString();
 			GUIStyle activeSt = maxed ? maxSt : valSt;
 

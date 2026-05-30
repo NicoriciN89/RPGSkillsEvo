@@ -69,33 +69,9 @@ public static class QuickbarData
 		}
 	}
 
-	public static int GetActiveSlotCount()
-	{
-		int num = 2;
-		foreach (SkillNode allNode in NodeDatabase.AllNodes)
-		{
-			if (allNode.Effect == EffectType.QuickSlot)
-			{
-				int num2 = (DataHub.RealNodes.ContainsKey(allNode.ID) ? DataHub.RealNodes[allNode.ID] : 0);
-				num += num2;
-			}
-		}
-		return Math.Min(num, 7);
-	}
+	public static int GetActiveSlotCount() => Status.GetActiveQuickSlotCount();
 
-	public static int GetActivePresetCount()
-	{
-		int num = 2;
-		foreach (SkillNode allNode in NodeDatabase.AllNodes)
-		{
-			if (allNode.Effect == EffectType.PresetSlot)
-			{
-				int num2 = (DataHub.RealNodes.ContainsKey(allNode.ID) ? DataHub.RealNodes[allNode.ID] : 0);
-				num += num2;
-			}
-		}
-		return Math.Min(num, 3);
-	}
+	public static int GetActivePresetCount() => Status.GetActivePresetSlotCount();
 
 	public static bool IsQuickSlotUnlocked()
 	{

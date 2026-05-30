@@ -8,6 +8,9 @@ public static class NodeManager
 
 	public static Dictionary<string, int> tNodes = new Dictionary<string, int>();
 
+	// Nodes where parent only needs level > 0 (not max level) to invest
+	private static readonly HashSet<string> FreeInvestNodeIDs = new HashSet<string> { "E7N1", "E7S1" };
+
 	public static void SyncFromHub()
 	{
 		tPoints = PlayerLevel.SkillPoints;
@@ -40,7 +43,9 @@ public static class NodeManager
 
 	private static bool IsFreeInvestNode(SkillNode node)
 	{
-		return node.Effect == EffectType.SpeedPenaltyOffset || node.Effect == EffectType.LootRadius || node.ID == "E7N1" || node.ID == "E7S1";
+		return node.Effect == EffectType.SpeedPenaltyOffset
+			|| node.Effect == EffectType.LootRadius
+			|| FreeInvestNodeIDs.Contains(node.ID);
 	}
 
 	private static bool IsPenaltyOffsetNode(SkillNode node)

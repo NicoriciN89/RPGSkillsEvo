@@ -7,21 +7,25 @@ namespace RPGSkillsEvo;
 [HarmonyPatch(typeof(Panel_Clothing), "UpdateGlobalStatBars")]
 internal static class Patch_Protection_UpdateGlobalStatBars
 {
+	private static int s_lastApplied = 0;
+
 	private static void Postfix(Panel_Clothing __instance)
 	{
 		if (GameManager.IsMainMenuActive() || GameManager.IsEmptySceneActive())
 		{
+			s_lastApplied = 0;
 			return;
 		}
 		float protectionBonus = Status.GetProtectionBonus();
-		if (!(protectionBonus <= 0f))
-		{
-			UILabel totalToughnessLabel = __instance.m_TotalToughnessLabel;
-			if ((UnityEngine.Object)(object)totalToughnessLabel != (UnityEngine.Object)null && int.TryParse(totalToughnessLabel.text.Replace("%", "").Trim(), out var result))
-			{
-				int num = Mathf.RoundToInt(protectionBonus * 100f);
-				totalToughnessLabel.text = $"{result + num}%";
-			}
-		}
+		UILabel totalToughnessLabel = __instance.m_TotalToughnessLabel;
+		if ((UnityEngine.Object)(object)totalToughnessLabel == (UnityEngine.Object)null)
+			return;
+		if (!int.TryParse(totalToughnessLabel.text.Replace("%", "").Trim(), out int current))
+			return;
+		// Subtract what we added last call to recover the game's base value, then add fresh bonus
+		int baseValue = current - s_lastApplied;
+		s_lastApplied = protectionBonus > 0f ? Mathf.RoundToInt(protectionBonus * 100f) : 0;
+		if (s_lastApplied != 0)
+			totalToughnessLabel.text = $"{baseValue + s_lastApplied}%";
 	}
 }

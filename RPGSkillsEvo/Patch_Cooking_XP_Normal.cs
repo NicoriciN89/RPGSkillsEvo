@@ -11,7 +11,7 @@ internal static class Patch_Cooking_XP_Normal
 	{
 		if (!GameManager.IsMainMenuActive() && !GameManager.IsEmptySceneActive())
 		{
-			if ((int)skillType == 3)
+			if (skillType == SkillType.Cooking)
 				ActivityXPFlag.CookingAwarded = true;
 			PlayerLevel.AddXP(Settings.XpPerSkill);
 		}

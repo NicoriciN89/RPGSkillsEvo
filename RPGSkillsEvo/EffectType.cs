@@ -40,5 +40,9 @@ public enum EffectType
 	ThirstDown,
 	ToolDurability,
 	FishingBonus,
-	SprintStamina
+	SprintStamina,
+	FireStartBonus,
+	ColdAdapt,
+	BowSteadiness,
+	CarcassHarvest
 }

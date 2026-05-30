@@ -258,7 +258,7 @@ public static class SkillNodeRenderer
 			};
 			val3.normal.textColor = Color.white;
 			GUIStyle val4 = val3;
-			GUI.Label(new Rect(10f, 15f, 380f, 25f), cancelTargetNode.Name, val2);
+			GUI.Label(new Rect(10f, 15f, 380f, 25f), cancelTargetNode.GetLocalizedName(), val2);
 			GUI.Label(new Rect(10f, 45f, 380f, 60f), Loc.Get("RPG.CONFIRM.CANCEL_BODY"), val4);
 			if (GUI.Button(new Rect(30f, 125f, 160f, 40f), Loc.Get("RPG.CONFIRM.OK")))
 			{

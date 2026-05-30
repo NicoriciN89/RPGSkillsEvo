@@ -6,6 +6,9 @@ public static class NodeDatabase
 {
 	public static List<SkillNode> AllNodes;
 
+	private static Dictionary<string, SkillNode> _byID;
+	private static Dictionary<(int, int), SkillNode> _byCoord;
+
 	static NodeDatabase()
 	{
 		AllNodes = new List<SkillNode>();
@@ -89,15 +92,35 @@ public static class NodeDatabase
 			// SprintStamina — extends from Sprint Speed III (E7N1E2)
 			AllNodes.Add(new SkillNode("E7N1E3", "질주 지구력 I", "Sprint Stamina I", 10, -1, 5, "E7N1E2", "Running", 2, EffectType.SprintStamina, 10f));
 			AllNodes.Add(new SkillNode("E7N1E4", "질주 지구력 II", "Sprint Stamina II", 11, -1, 5, "E7N1E3", "Running", 3, EffectType.SprintStamina, 10f));
+			// Fire Duration — east of WS5S1 (Warmth I)
+			AllNodes.Add(new SkillNode("WS5FM1", "Fire Duration I",  "Fire Duration I",  -4, 6, 5, "WS5S1",  "Thermometer", 3, EffectType.FireStartBonus, 5f));
+			AllNodes.Add(new SkillNode("WS5FM2", "Fire Duration II", "Fire Duration II", -3, 6, 5, "WS5FM1", "Thermometer", 5, EffectType.FireStartBonus, 5f));
+			// Cold Adaptation — south of WS5N2 (Bleed Resist II)
+			AllNodes.Add(new SkillNode("WS5CA1", "Cold Adaptation I",  "Cold Adaptation I",  -5, 2, 5, "WS5N2",  "Heart", 3, EffectType.ColdAdapt, 5f));
+			AllNodes.Add(new SkillNode("WS5CA2", "Cold Adaptation II", "Cold Adaptation II", -5, 1, 5, "WS5CA1", "Heart", 5, EffectType.ColdAdapt, 5f));
+			// Forager — east of WS5E2 (Harvest Bonus II)
+			AllNodes.Add(new SkillNode("WS5FO1", "Forager I",  "Forager I",  -3, 4, 5, "WS5E2",  "Heart", 3, EffectType.CarcassHarvest, 5f));
+			AllNodes.Add(new SkillNode("WS5FO2", "Forager II", "Forager II", -3, 3, 5, "WS5FO1", "Heart", 5, EffectType.CarcassHarvest, 5f));
+			// Archery Focus — south of N6 (Combat Awakening)
+			AllNodes.Add(new SkillNode("N6AF1", "Archery Focus I",  "Archery Focus I",  0, -7, 5, "N6",    "Scope", 3, EffectType.BowSteadiness, 5f));
+			AllNodes.Add(new SkillNode("N6AF2", "Archery Focus II", "Archery Focus II", 0, -8, 5, "N6AF1", "Scope", 5, EffectType.BowSteadiness, 5f));
+
+		_byID = new Dictionary<string, SkillNode>(AllNodes.Count);
+		_byCoord = new Dictionary<(int, int), SkillNode>(AllNodes.Count);
+		foreach (var node in AllNodes)
+		{
+			_byID[node.ID] = node;
+			_byCoord[(node.GridX, node.GridY)] = node;
+		}
 	}
 
 	public static SkillNode GetByID(string id)
 	{
-		return AllNodes.Find((SkillNode n) => n.ID == id);
+		return _byID.TryGetValue(id, out var node) ? node : null;
 	}
 
 	public static SkillNode GetByCoord(int x, int y)
 	{
-		return AllNodes.Find((SkillNode n) => n.GridX == x && n.GridY == y);
+		return _byCoord.TryGetValue((x, y), out var node) ? node : null;
 	}
 }

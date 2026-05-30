@@ -43,6 +43,14 @@ public static class Status
 	private static float cachedToolDurability;
 	private static float cachedFishingBonus;
 	private static float cachedSprintStamina;
+	private static int cachedActiveLootSlots;
+	private static int cachedActiveQuickSlots;
+	private static int cachedActivePresetSlots;
+	private static float cachedActiveLootRadius;
+	private static float cachedFireStartBonus;
+	private static float cachedColdAdapt;
+	private static float cachedBowSteadiness;
+	private static float cachedCarcassHarvest;
 
 	public static void RefreshCache()
 	{
@@ -69,6 +77,14 @@ public static class Status
 		float num21tool = 0f;
 		float num22fish = 0f;
 		float num23ss = 0f;
+		int numLootSlots = 0;
+		int numQuickSlots = 0;
+		int numPresetSlots = 0;
+		float numLootRadius = 5f;
+		float numFireStart = 0f;
+		float numColdAdapt = 0f;
+		float numBowSteady = 0f;
+		float numCarcass = 0f;
 		foreach (SkillNode allNode in NodeDatabase.AllNodes)
 		{
 			int num17 = (DataHub.RealNodes.ContainsKey(allNode.ID) ? DataHub.RealNodes[allNode.ID] : 0);
@@ -136,6 +152,30 @@ public static class Status
 				case EffectType.SprintStamina:
 					num23ss += (float)num17 * allNode.EffectPerLevel * 0.01f;
 					break;
+				case EffectType.LootSlot:
+					numLootSlots += num17;
+					break;
+				case EffectType.QuickSlot:
+					numQuickSlots += num17;
+					break;
+				case EffectType.PresetSlot:
+					numPresetSlots += num17;
+					break;
+				case EffectType.LootRadius:
+					numLootRadius += (float)num17 * allNode.EffectPerLevel;
+					break;
+				case EffectType.FireStartBonus:
+					numFireStart += (float)num17 * allNode.EffectPerLevel * 0.01f;
+					break;
+				case EffectType.ColdAdapt:
+					numColdAdapt += (float)num17 * allNode.EffectPerLevel * 0.01f;
+					break;
+				case EffectType.BowSteadiness:
+					numBowSteady += (float)num17 * allNode.EffectPerLevel * 0.01f;
+					break;
+				case EffectType.CarcassHarvest:
+					numCarcass += (float)num17 * allNode.EffectPerLevel * 0.01f;
+					break;
 				}
 				if (allNode.Penalty == PenaltyType.SpeedDown)
 				{
@@ -173,6 +213,14 @@ public static class Status
 		cachedToolDurability = Math.Min(0.5f, num21tool);
 		cachedFishingBonus = Math.Min(1f, num22fish);
 		cachedSprintStamina = Math.Min(1f, num23ss);
+		cachedActiveLootSlots = Math.Min(AutoLootData.BaseSlotCount + numLootSlots, AutoLootData.MaxSlotCount);
+		cachedActiveQuickSlots = Math.Min(QuickbarData.BaseSlotCount + numQuickSlots, QuickbarData.MaxSlotCount);
+		cachedActivePresetSlots = Math.Min(QuickbarData.BasePresetCount + numPresetSlots, QuickbarData.MaxPresetCount);
+		cachedActiveLootRadius = numLootRadius;
+		cachedFireStartBonus = Math.Min(0.5f, numFireStart);
+		cachedColdAdapt = Math.Min(0.5f, numColdAdapt);
+		cachedBowSteadiness = Math.Min(0.5f, numBowSteady);
+		cachedCarcassHarvest = Math.Min(0.5f, numCarcass);
 	}
 
 	public static float GetWeightBonus()
@@ -284,4 +332,13 @@ public static class Status
 	{
 		return cachedSprintStamina;
 	}
+
+	public static int GetActiveLootSlotCount() => cachedActiveLootSlots;
+	public static int GetActiveQuickSlotCount() => cachedActiveQuickSlots;
+	public static int GetActivePresetSlotCount() => cachedActivePresetSlots;
+	public static float GetActiveLootRadius() => cachedActiveLootRadius;
+	public static float GetFireStartBonus() => cachedFireStartBonus;
+	public static float GetColdAdapt() => cachedColdAdapt;
+	public static float GetBowSteadiness() => cachedBowSteadiness;
+	public static float GetCarcassHarvest() => cachedCarcassHarvest;
 }

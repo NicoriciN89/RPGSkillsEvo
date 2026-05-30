@@ -13,11 +13,17 @@ public static class EvoMigration
 		}
 		if (version == "1.1.0")
 		{
+			// Fixes saves that had bilingual keys ("화살 / Arrow") from old migration
+			MigrateCategoryKeys();
 			version = "1.2.0";
 		}
 		if (version == "1.2.0")
 		{
 			version = "1.2.1";
+		}
+		if (version == "1.2.1")
+		{
+			version = "2.0.0";
 		}
 	}
 
@@ -29,16 +35,26 @@ public static class EvoMigration
 
 	private static void MigrateCategoryKeys()
 	{
+		// Maps both the old Korean-only keys AND the intermediate bilingual keys
+		// to the current Loc-based keys (e.g. Loc.Get("RPG.CAT.ARROW") = "Arrow" in English).
 		Dictionary<string, string> dictionary = new Dictionary<string, string>
 		{
-			{ "화살", "화살 / Arrow" },
-			{ "나무", "나무 / Wood" },
-			{ "식물", "식물 / Plant" },
-			{ "탄약", "탄약 / Ammo" },
-			{ "가죽", "가죽 / Hide" },
-			{ "불", "불 / Fire" },
-			{ "기타", "기타 / Misc" },
-			{ "커스텀", "커스텀 / Custom" }
+			{ "화살",           Loc.Get("RPG.CAT.ARROW") },
+			{ "화살 / Arrow",   Loc.Get("RPG.CAT.ARROW") },
+			{ "나무",           Loc.Get("RPG.CAT.WOOD") },
+			{ "나무 / Wood",    Loc.Get("RPG.CAT.WOOD") },
+			{ "식물",           Loc.Get("RPG.CAT.PLANT") },
+			{ "식물 / Plant",   Loc.Get("RPG.CAT.PLANT") },
+			{ "탄약",           Loc.Get("RPG.CAT.AMMO") },
+			{ "탄약 / Ammo",    Loc.Get("RPG.CAT.AMMO") },
+			{ "가죽",           Loc.Get("RPG.CAT.HIDE") },
+			{ "가죽 / Hide",    Loc.Get("RPG.CAT.HIDE") },
+			{ "불",             Loc.Get("RPG.CAT.FIRE") },
+			{ "불 / Fire",      Loc.Get("RPG.CAT.FIRE") },
+			{ "기타",           Loc.Get("RPG.CAT.MISC") },
+			{ "기타 / Misc",    Loc.Get("RPG.CAT.MISC") },
+			{ "커스텀",         Loc.Get("RPG.CAT.CUSTOM") },
+			{ "커스텀 / Custom",Loc.Get("RPG.CAT.CUSTOM") },
 		};
 		AutoLootData.SlotData[] slots = AutoLootData.Slots;
 		foreach (AutoLootData.SlotData slotData in slots)

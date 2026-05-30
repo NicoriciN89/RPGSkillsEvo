@@ -24,27 +24,15 @@ public static class MaxConditionManager
 
 	public static void ApplyFatigue(Fatigue instance)
 	{
-		float num = GetVitalityBonus() - GetVitalityDownPenalty();
-		if (num != 0f)
-		{
-			float num2 = 100f + num;
-			if (instance.m_MaxFatigue != num2)
-			{
-				instance.m_MaxFatigue = num2;
-			}
-		}
+		float target = 100f + GetVitalityBonus() - GetVitalityDownPenalty();
+		if (instance.m_MaxFatigue != target)
+			instance.m_MaxFatigue = target;
 	}
 
 	public static void ApplyThirst(Thirst instance)
 	{
-		float num = GetVitalityBonus() - GetVitalityDownPenalty();
-		if (num != 0f)
-		{
-			float num2 = 100f + num;
-			if (instance.m_MaxThirst != num2)
-			{
-				instance.m_MaxThirst = num2;
-			}
-		}
+		float target = 100f + GetVitalityBonus() - GetVitalityDownPenalty();
+		if (instance.m_MaxThirst != target)
+			instance.m_MaxThirst = target;
 	}
 }

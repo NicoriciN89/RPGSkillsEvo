@@ -21,11 +21,11 @@ public static class AutoLootUserCustom
 			try
 			{
 				StringBuilder stringBuilder = new StringBuilder();
-				stringBuilder.AppendLine("# RPG Skills Evo - 오토루팅 커스텀 아이템 목록");
-				stringBuilder.AppendLine("# 아이템 이름을 한 줄에 하나씩 입력하세요.");
-				stringBuilder.AppendLine("# GEAR_ 접두사는 자동으로 붙습니다.");
+				stringBuilder.AppendLine("# RPG Skills Evo - Auto Loot Custom Item List");
+				stringBuilder.AppendLine("# Enter one item name per line.");
+				stringBuilder.AppendLine("# The GEAR_ prefix is added automatically.");
 				stringBuilder.AppendLine("");
-				stringBuilder.AppendLine("↓↓ [ 여기에 아이템 이름을 입력하세요 ] ↓↓");
+				stringBuilder.AppendLine("# ↓↓ Add item names below ↓↓");
 				stringBuilder.AppendLine("");
 				File.WriteAllText(filePath, stringBuilder.ToString(), Encoding.UTF8);
 				return;
@@ -48,7 +48,7 @@ public static class AutoLootUserCustom
 					customLootSet.Add(item);
 				}
 			}
-			MelonLogger.Msg($"[RPGSkillsEvo] 커스텀 오토루팅 아이템 {customLootSet.Count}개 로드 완료.");
+			MelonLogger.Msg($"[RPGSkillsEvo] Custom auto-loot list loaded: {customLootSet.Count} item(s).");
 		}
 		catch
 		{

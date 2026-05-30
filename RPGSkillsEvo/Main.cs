@@ -32,6 +32,7 @@ public class Main : MelonMod
 		SkillsUI.ResetInternalState();
 		InterfaceUI.ForceClose();
 		MapTrackManager.ClearTarget();
+		Patch_Panel_Map_MapTrack.OnSceneLoaded();
 		MapTrackHUDRenderer.OnSceneLoaded();
 		GunZoomManager.Reset();
 		StatsHUDRenderer.ResetLabels();

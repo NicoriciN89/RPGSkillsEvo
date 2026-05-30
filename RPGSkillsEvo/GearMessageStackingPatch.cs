@@ -28,25 +28,33 @@ public static class GearMessageStackingPatch
 		{
 			return true;
 		}
-		if (!pickupCounts.ContainsKey(text))
-		{
-			pickupCounts[text] = 0;
-		}
-		pickupCounts[text]++;
-		int num = (pickupCounts[text] + 1) / 2;
+		// Find existing visible message for this text
+		GearMessage.GearMessageInfo existing = null;
 		for (int i = 0; i < gearMessageQueue.Count; i++)
 		{
 			GearMessage.GearMessageInfo val = gearMessageQueue[i];
 			if (val != null && val.m_Text != null && val.m_Text.StartsWith(text))
 			{
-				val.m_Text = ((num > 1) ? $"{text} x{num}" : text);
-				val.m_DisplayTime = 2f;
-				return false;
+				existing = val;
+				break;
 			}
 		}
-		if (num > 1)
+		// No visible message means previous batch expired — start a fresh count
+		if (existing == null || !pickupCounts.ContainsKey(text))
 		{
-			newGearMessage.m_Text = $"{text} x{num}";
+			pickupCounts[text] = 0;
+		}
+		pickupCounts[text]++;
+		int count = pickupCounts[text];
+		if (existing != null)
+		{
+			existing.m_Text = count > 1 ? $"{text} x{count}" : text;
+			existing.m_DisplayTime = 2f;
+			return false;
+		}
+		if (count > 1)
+		{
+			newGearMessage.m_Text = $"{text} x{count}";
 		}
 		return true;
 	}

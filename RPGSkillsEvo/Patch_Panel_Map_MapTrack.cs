@@ -9,6 +9,10 @@ namespace RPGSkillsEvo;
 [HarmonyPatch(typeof(Panel_Map), "OnMapClicked")]
 internal class Patch_Panel_Map_MapTrack
 {
+	private static Il2CppArrayBase<MapDetail> s_cachedMapDetails;
+
+	public static void OnSceneLoaded() => s_cachedMapDetails = null;
+
 	private static void Postfix(Panel_Map __instance)
 	{
 		//IL_00c9: Unknown result type (might be due to invalid IL or missing references)
@@ -68,8 +72,9 @@ internal class Patch_Panel_Map_MapTrack
 		string mapNameOfCurrentScene = __instance.GetMapNameOfCurrentScene();
 		Vector3 val2 = Vector3.zero;
 		float num = float.MaxValue;
-		Il2CppArrayBase<MapDetail> val3 = Resources.FindObjectsOfTypeAll<MapDetail>();
-		foreach (MapDetail item in val3)
+		if (s_cachedMapDetails == null)
+			s_cachedMapDetails = Resources.FindObjectsOfTypeAll<MapDetail>();
+		foreach (MapDetail item in s_cachedMapDetails)
 		{
 			if (item.m_LocID == val.m_LocationNameLocID && ((Component)item).gameObject.activeInHierarchy)
 			{

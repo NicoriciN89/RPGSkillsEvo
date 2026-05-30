@@ -18,10 +18,13 @@ public static class AutoLootManager
 
 	private static float sceneCooldown = 2f;
 
+	private static Il2CppArrayBase<GearItem> cachedGearItems;
+
 	public static void OnSceneLoaded()
 	{
 		scanTimer = 0f;
 		sceneCooldown = 2f;
+		cachedGearItems = null;
 	}
 
 	public static void OnUpdate()
@@ -62,12 +65,11 @@ public static class AutoLootManager
 			return;
 		}
 		float activeLootRadius = AutoLootData.GetActiveLootRadius();
-		Il2CppArrayBase<GearItem> val = Object.FindObjectsOfType<GearItem>();
-		if (val == null)
-		{
+		if (cachedGearItems == null)
+			cachedGearItems = Object.FindObjectsOfType<GearItem>();
+		if (cachedGearItems == null)
 			return;
-		}
-		foreach (GearItem item in val)
+		foreach (GearItem item in cachedGearItems)
 		{
 			if ((UnityEngine.Object)(object)item == (UnityEngine.Object)null || item.m_InPlayerInventory || Vector3.Distance(playerTransform.position, ((Component)item).transform.position) > activeLootRadius)
 			{
@@ -120,6 +122,7 @@ public static class AutoLootManager
 			if (playerManagerComponent.ProcessPickupItemInteraction(item, false, false, false))
 			{
 				GearMessage.AddMessageFadeIn(item, Loc.Get("RPG.UI.ITEM_ACQUIRED"), displayName, false, true);
+				cachedGearItems = null;
 				return true;
 			}
 			return false;

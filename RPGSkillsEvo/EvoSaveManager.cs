@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using Il2Cpp;
 using MelonLoader;
@@ -10,7 +11,7 @@ namespace RPGSkillsEvo;
 
 public static class EvoSaveManager
 {
-	private const string CURRENT_VERSION = "1.2.1";
+	private const string CURRENT_VERSION = "2.0.0";
 
 	private static string GetSavePath(string slotName)
 	{
@@ -35,8 +36,8 @@ public static class EvoSaveManager
 		//IL_01a3: Unknown result type (might be due to invalid IL or missing references)
 		//IL_01ad: Expected I4, but got Unknown
 		List<string> list = new List<string>();
-		list.Add("VERSION|1.2.1");
-		list.Add($"LEVEL|{PlayerLevel.Level}|{PlayerLevel.CurrentXP}|{PlayerLevel.SkillPoints}");
+		list.Add($"VERSION|{CURRENT_VERSION}");
+		list.Add($"LEVEL|{PlayerLevel.Level}|{PlayerLevel.CurrentXP.ToString(CultureInfo.InvariantCulture)}|{PlayerLevel.SkillPoints}");
 		List<string> list2 = new List<string>();
 		foreach (KeyValuePair<string, int> realNode in DataHub.RealNodes)
 		{
@@ -44,7 +45,7 @@ public static class EvoSaveManager
 		}
 		list.Add("NODES|" + string.Join(",", list2));
 		list.Add($"HOTKEY|{(int)DataHub.MenuHotkey}");
-		list.Add($"AUTOLOOT|{AutoLootManager.IsEnabled}|{AutoLootManager.ScanInterval}|{(int)AutoLootManager.ToggleHotkey}");
+		list.Add($"AUTOLOOT|{AutoLootManager.IsEnabled}|{AutoLootManager.ScanInterval.ToString(CultureInfo.InvariantCulture)}|{(int)AutoLootManager.ToggleHotkey}");
 		List<string> list3 = new List<string>();
 		AutoLootData.SlotData[] slots = AutoLootData.Slots;
 		foreach (AutoLootData.SlotData slotData in slots)
@@ -79,7 +80,7 @@ public static class EvoSaveManager
 			}
 			list.Add(string.Format("PRESET{0}|{1}", l, string.Join(",", list6)));
 		}
-		list.Add($"GUNZOOM|{GunZoomManager.rifleMult}|{GunZoomManager.revolverMult}");
+		list.Add($"GUNZOOM|{GunZoomManager.rifleMult.ToString(CultureInfo.InvariantCulture)}|{GunZoomManager.revolverMult.ToString(CultureInfo.InvariantCulture)}");
 		return string.Join("\n", list);
 	}
 
@@ -128,7 +129,7 @@ public static class EvoSaveManager
 					if (array5.Length >= 4)
 					{
 						PlayerLevel.Level = int.Parse(array5[1]);
-						PlayerLevel.CurrentXP = float.Parse(array5[2]);
+						PlayerLevel.CurrentXP = float.Parse(array5[2], CultureInfo.InvariantCulture);
 						PlayerLevel.SkillPoints = int.Parse(array5[3]);
 					}
 					break;
@@ -160,7 +161,7 @@ public static class EvoSaveManager
 					if (array5.Length >= 4)
 					{
 						AutoLootManager.IsEnabled = bool.Parse(array5[1]);
-						AutoLootManager.ScanInterval = float.Parse(array5[2]);
+						AutoLootManager.ScanInterval = float.Parse(array5[2], CultureInfo.InvariantCulture);
 						AutoLootManager.ToggleHotkey = (KeyCode)int.Parse(array5[3]);
 					}
 					break;
@@ -247,8 +248,8 @@ public static class EvoSaveManager
 				case "GUNZOOM":
 					if (array5.Length >= 3)
 					{
-						GunZoomManager.rifleMult = float.Parse(array5[1]);
-						GunZoomManager.revolverMult = float.Parse(array5[2]);
+						GunZoomManager.rifleMult = float.Parse(array5[1], CultureInfo.InvariantCulture);
+						GunZoomManager.revolverMult = float.Parse(array5[2], CultureInfo.InvariantCulture);
 					}
 					break;
 				}
@@ -259,7 +260,7 @@ public static class EvoSaveManager
 		}
 		catch (Exception ex)
 		{
-			MelonLogger.Error("[EvoSaveManager] 로드 실패: " + ex.Message);
+			MelonLogger.Error("[EvoSaveManager] Load failed: " + ex.Message);
 			ResetToDefaults();
 		}
 	}
@@ -287,6 +288,7 @@ public static class EvoSaveManager
 			QuickbarData.Slots[j].ItemID = "None";
 			QuickbarData.Slots[j].Category = "Weapon";
 			QuickbarData.Slots[j].Priority = "Low";
+			QuickbarData.Slots[j].HotKey = (KeyCode)0;
 		}
 		for (int k = 0; k < 3; k++)
 		{
@@ -313,7 +315,7 @@ public static class EvoSaveManager
 		}
 		catch (Exception ex)
 		{
-			MelonLogger.Error("[EvoSaveManager] 저장 실패: " + ex.Message);
+			MelonLogger.Error("[EvoSaveManager] Save failed: " + ex.Message);
 		}
 	}
 

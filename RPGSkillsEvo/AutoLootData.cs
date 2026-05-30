@@ -42,33 +42,9 @@ public static class AutoLootData
 
 	public static Dictionary<string, List<string>> Categories;
 
-	public static int GetActiveSlotCount()
-	{
-		int num = 5;
-		foreach (SkillNode allNode in NodeDatabase.AllNodes)
-		{
-			if (allNode.Effect == EffectType.LootSlot)
-			{
-				int num2 = (DataHub.RealNodes.ContainsKey(allNode.ID) ? DataHub.RealNodes[allNode.ID] : 0);
-				num += num2;
-			}
-		}
-		return Math.Min(num, 15);
-	}
+	public static int GetActiveSlotCount() => Status.GetActiveLootSlotCount();
 
-	public static float GetActiveLootRadius()
-	{
-		float num = 5f;
-		foreach (SkillNode allNode in NodeDatabase.AllNodes)
-		{
-			if (allNode.Effect == EffectType.LootRadius)
-			{
-				int num2 = (DataHub.RealNodes.ContainsKey(allNode.ID) ? DataHub.RealNodes[allNode.ID] : 0);
-				num += (float)num2 * allNode.EffectPerLevel;
-			}
-		}
-		return num;
-	}
+	public static float GetActiveLootRadius() => Status.GetActiveLootRadius();
 
 	static AutoLootData()
 	{

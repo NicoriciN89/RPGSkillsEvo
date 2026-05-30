@@ -12,9 +12,9 @@ internal static class Patch_FatigueBuff_Apply
 		PlayerManager playerManager = GameManager.m_PlayerManager;
 		if ((UnityEngine.Object)(object)playerManager != (UnityEngine.Object)null)
 		{
-			float num = 1f + Status.GetBuffDuration();
-			float fatigueBuffHoursDuration = (playerManager.m_FatigueBuffHoursRemaining = (__instance.m_DurationHours *= num));
-			playerManager.m_FatigueBuffHoursDuration = fatigueBuffHoursDuration;
+			float modifiedDuration = __instance.m_DurationHours * (1f + Status.GetBuffDuration());
+			playerManager.m_FatigueBuffHoursRemaining = modifiedDuration;
+			playerManager.m_FatigueBuffHoursDuration = modifiedDuration;
 		}
 	}
 }
